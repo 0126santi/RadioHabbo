@@ -6,10 +6,16 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <h1 class="titulo">RADIO</h1>
+  <!-- Banner superior -->
+  <div class="banner">
+    <div class="banner-content">
+      <img src="imagenes/foto.jpeg" alt="Foto" class="banner-foto">
+      <h1 class="banner-titulo">RADIO</h1>
+    </div>
+  </div>
 
-    <!-- Reproductor de radio desde Caster.fm -->
+  <!-- Reproductor de radio -->
+  <div class="reproductor">
     <div data-type="newStreamPlayer"
          data-publicToken="8dbc7080-19f5-475b-a777-c58d74d65be7"
          data-theme="dark"
@@ -24,9 +30,27 @@
     <script src="//cdn.cloud.caster.fm/widgets/embed.js"></script>
   </div>
 
+  <!-- Hora y fecha -->
+  <div class="hora-fecha" id="horaFecha"></div>
+
+  <!-- Descripción -->
   <div class="mensaje">
     <h2>Welcome to the website</h2>
     <p>Escucha nuestra transmisión en vivo </p>
   </div>
+
+  <script>
+    // Mostrar hora y fecha de Caracas
+    function actualizarHoraFecha() {
+      const opciones = { timeZone: 'America/Caracas', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+      const opcionesFecha = { timeZone: 'America/Caracas', year: 'numeric', month: 'long', day: 'numeric' };
+      const ahora = new Date();
+      const hora = ahora.toLocaleTimeString('es-VE', opciones);
+      const fecha = ahora.toLocaleDateString('es-VE', opcionesFecha);
+      document.getElementById('horaFecha').innerHTML = `<strong>${hora}</strong> - ${fecha}`;
+    }
+    setInterval(actualizarHoraFecha, 1000);
+    actualizarHoraFecha();
+  </script>
 </body>
 </html>
