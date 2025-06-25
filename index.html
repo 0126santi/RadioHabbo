@@ -43,25 +43,34 @@
   </div>
 
   <script>
-function actualizarHoraFecha() {
-  const opcionesHora = { timeZone: 'America/Caracas', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
-  const opcionesFecha = { timeZone: 'America/Caracas', year: 'numeric', month: 'long', day: 'numeric' };
-  const ahora = new Date();
-  let hora = ahora.toLocaleTimeString('es-VE', opcionesHora);
-  const fecha = ahora.toLocaleDateString('es-VE', opcionesFecha);
+  async function actualizarHoraFecha() {
+    try {
+      const res = await fetch('https://worldtimeapi.org/api/timezone/America/Caracas');
+      const data = await res.json();
+      const fechaHora = new Date(data.datetime);
 
-  const match = hora.match(/(\d{2}:\d{2}:\d{2})\s*([AP]M)/i);
-  if (match) {
-    hora = `<span>${match[1]}</span> <span class="ampm">${match[2].toUpperCase()}</span>`;
-  } else {
-    hora = `<span>${hora}</span>`;
+      // Formato 12 horas con AM/PM
+      let horas = fechaHora.getHours();
+      const minutos = fechaHora.getMinutes().toString().padStart(2, '0');
+      const segundos = fechaHora.getSeconds().toString().padStart(2, '0');
+      const ampm = horas >= 12 ? 'PM' : 'AM';
+      horas = horas % 12 || 12;
+
+      const horaStr = `<span>${horas}:${minutos}:${segundos}</span> <span class="ampm">${ampm}</span>`;
+
+      // Fecha en español
+      const opcionesFecha = { year: 'numeric', month: 'long', day: 'numeric' };
+      const fechaStr = fechaHora.toLocaleDateString('es-VE', opcionesFecha);
+
+      document.getElementById('horaDigital').innerHTML = horaStr;
+      document.getElementById('fechaDigital').textContent = fechaStr.charAt(0).toUpperCase() + fechaStr.slice(1);
+    } catch (e) {
+      document.getElementById('horaDigital').textContent = 'Error';
+      document.getElementById('fechaDigital').textContent = '';
+    }
   }
-
-  document.getElementById('horaDigital').innerHTML = hora;
-  document.getElementById('fechaDigital').textContent = fecha.charAt(0).toUpperCase() + fecha.slice(1);
-}
-setInterval(actualizarHoraFecha, 1000);
-actualizarHoraFecha();
-</script>
+  setInterval(actualizarHoraFecha, 1000);
+  actualizarHoraFecha();
+  </script>
 </body>
 </html>
