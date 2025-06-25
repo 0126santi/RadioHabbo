@@ -56,13 +56,37 @@ body {
 
 .hora-fecha {
   margin: 30px auto 0 auto;
-  max-width: 400px;
+  max-width: 430px;
   background: #1b1c1d;
   border-radius: 16px;
-  padding: 15px;
+  padding: 18px 0 10px 0;
   text-align: center;
-  font-size: 1.3rem;
   box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  border: 2px solid #7f53ac;
+}
+
+#horaDigital {
+  font-family: 'Orbitron', 'Segoe UI', monospace;
+  font-size: 2rem;
+  color: #fff;
+  letter-spacing: 2px;
+  margin-bottom: 2px;
+  text-shadow: 0 0 8px #7f53ac, 0 0 2px #fff;
+}
+
+#fechaDigital {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 1.1rem;
+  color: #d1d1d1;
+  margin-top: 0;
+  letter-spacing: 1px;
+}
+.ampm {
+  font-size: 1rem;
+  color: #e81e4d;
+  margin-left: 8px;
+  vertical-align: super;
+  letter-spacing: 1px;
 }
 
 .mensaje {
