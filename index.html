@@ -43,34 +43,33 @@
   </div>
 
   <script>
-  async function actualizarHoraFecha() {
-    try {
-      const res = await fetch('https://worldtimeapi.org/api/timezone/America/Caracas');
-      const data = await res.json();
-      const fechaHora = new Date(data.datetime);
+async function actualizarHoraFecha() {
+  try {
+    const res = await fetch('https://worldtimeapi.org/api/timezone/America/Caracas');
+    const data = await res.json();
+    const fechaHora = new Date(data.datetime);
 
-      // Formato 12 horas con AM/PM
-      let horas = fechaHora.getHours();
-      const minutos = fechaHora.getMinutes().toString().padStart(2, '0');
-      const segundos = fechaHora.getSeconds().toString().padStart(2, '0');
-      const ampm = horas >= 12 ? 'PM' : 'AM';
-      horas = horas % 12 || 12;
+    // Formato 12 horas con AM/PM, solo hora y minutos
+    let horas = fechaHora.getHours();
+    const minutos = fechaHora.getMinutes().toString().padStart(2, '0');
+    const ampm = horas >= 12 ? 'PM' : 'AM';
+    horas = horas % 12 || 12;
 
-      const horaStr = `<span>${horas}:${minutos}:${segundos}</span> <span class="ampm">${ampm}</span>`;
+    const horaStr = `<span>${horas}:${minutos}</span> <span class="ampm">${ampm}</span>`;
 
-      // Fecha en español
-      const opcionesFecha = { year: 'numeric', month: 'long', day: 'numeric' };
-      const fechaStr = fechaHora.toLocaleDateString('es-VE', opcionesFecha);
+    // Fecha en español
+    const opcionesFecha = { year: 'numeric', month: 'long', day: 'numeric' };
+    const fechaStr = fechaHora.toLocaleDateString('es-VE', opcionesFecha);
 
-      document.getElementById('horaDigital').innerHTML = horaStr;
-      document.getElementById('fechaDigital').textContent = fechaStr.charAt(0).toUpperCase() + fechaStr.slice(1);
-    } catch (e) {
-      document.getElementById('horaDigital').textContent = 'Error';
-      document.getElementById('fechaDigital').textContent = '';
-    }
+    document.getElementById('horaDigital').innerHTML = horaStr;
+    document.getElementById('fechaDigital').textContent = fechaStr.charAt(0).toUpperCase() + fechaStr.slice(1);
+  } catch (e) {
+    document.getElementById('horaDigital').textContent = 'Error';
+    document.getElementById('fechaDigital').textContent = '';
   }
-  setInterval(actualizarHoraFecha, 1000);
-  actualizarHoraFecha();
-  </script>
+}
+setInterval(actualizarHoraFecha, 1000);
+actualizarHoraFecha();
+</script>
 </body>
 </html>
