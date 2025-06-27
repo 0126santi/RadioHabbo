@@ -43,25 +43,28 @@
   </div>
 
   <script>
-  function actualizarHoraFecha() {
-    const opcionesHora = { timeZone: 'America/Caracas', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
-    const opcionesFecha = { timeZone: 'America/Caracas', year: 'numeric', month: 'long', day: 'numeric' };
-    const ahora = new Date();
-    let hora = ahora.toLocaleTimeString('es-VE', opcionesHora);
-    const fecha = ahora.toLocaleDateString('es-VE', opcionesFecha);
+  async function actualizarHoraFecha() {
+    try {
+      const res = await fetch('/api/hora');
+      const data = await res.json();
 
-    // Separar AM/PM de la hora
-    const match = hora.match(/(\d{2}:\d{2}:\d{2})\s*([AP]M)/i);
-    if (match) {
-      hora = `<span>${match[1]}</span> <span class="ampm">${match[2].toUpperCase()}</span>`;
-    } else {
-      hora = `<span>${hora}</span>`;
+      // Separa hora y AM/PM
+      const match = data.hora.match(/(\d{2}:\d{2})\s*([AP]M)/i);
+      let horaHtml;
+      if (match) {
+        horaHtml = `<span>${match[1]}</span> <span class="ampm">${match[2].toUpperCase()}</span>`;
+      } else {
+        horaHtml = `<span>${data.hora}</span>`;
+      }
+
+      document.getElementById('horaDigital').innerHTML = horaHtml;
+      document.getElementById('fechaDigital').textContent = data.fecha.charAt(0).toUpperCase() + data.fecha.slice(1);
+    } catch (e) {
+      document.getElementById('horaDigital').textContent = 'Error';
+      document.getElementById('fechaDigital').textContent = '';
     }
-
-    document.getElementById('horaDigital').innerHTML = hora;
-    document.getElementById('fechaDigital').textContent = fecha.charAt(0).toUpperCase() + fecha.slice(1);
   }
-  setInterval(actualizarHoraFecha, 1000);
+  setInterval(actualizarHoraFecha, 10000); // Actualiza cada 10 segundos
   actualizarHoraFecha();
   </script>
 </body>
