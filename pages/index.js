@@ -57,7 +57,7 @@ export default function Home() {
       <div className="main-content">
         <div className="left-content">
           {/* Reproductor de radio */}
-          <div className="reproductor">
+          {/* <div className="reproductor">
             <div
               data-type="newStreamPlayer"
               data-publicToken="8dbc7080-19f5-475b-a777-c58d74d65be7"
@@ -71,7 +71,11 @@ export default function Home() {
               <a href="https://www.caster.fm">Stream Hosting</a>
               <a href="https://www.caster.fm">Radio Server Hosting</a>
             </div>
-          </div>
+          </div> */}
+          <audio controls autoPlay>
+            <source src="https://icecast-railway-production.up.railway.app/stream" type="audio/mpeg" />
+            Tu navegador no soporta el elemento de audio.
+          </audio>
           {/* Descripción */}
           <div className="info-row">
             <div className="mensaje">
