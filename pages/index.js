@@ -46,10 +46,23 @@ export default function Home() {
   return (
     <>
       {/* Banner superior */}
-      <div className="banner">
-        <div className="banner-content">
-          <img src="/imagenes/foto.jpeg" alt="Foto" className="banner-foto" />
-          <h1 className="banner-titulo">RADIO</h1>
+      <div
+        className="banner"
+        style={{ width: "100%" }}
+      >
+        <div
+          className="banner-content"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            width: "100%"
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <img src="/imagenes/foto.jpeg" alt="Foto" className="banner-foto" />
+            <h1 className="banner-titulo" style={{ marginLeft: "10px" }}>RADIO</h1>
+          </div>
         </div>
       </div>
 
@@ -78,6 +91,18 @@ export default function Home() {
               <h2>Welcome to the website</h2>
               <p>Escucha nuestra transmisión en vivo </p>
             </div>
+            {/* Keko de Habbo */}
+            <img
+              src="https://www.habbo.es/habbo-imaging/avatarimage?user=rojosantrix&action=std&direction=2&head_direction=2&size=l"
+              alt="Keko de Habbo"
+              style={{
+                imageRendering: "pixelated",
+                width: "auto",
+                height: "160px",
+                marginRight: "20px",
+                marginLeft: "20px"
+              }}
+            />
             {/* Hora y fecha */}
             <div className="hora-fecha">
               <div className="titulo-hora">Hora Venezuela</div>
