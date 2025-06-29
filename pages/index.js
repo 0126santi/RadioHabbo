@@ -32,17 +32,6 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  // Cargar el script externo del reproductor solo una vez
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "//cdn.cloud.caster.fm/widgets/embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   return (
     <>
       {/* Banner superior */}
@@ -57,21 +46,6 @@ export default function Home() {
       <div className="main-content">
         <div className="left-content">
           {/* Reproductor de radio */}
-          {/* <div className="reproductor">
-            <div
-              data-type="newStreamPlayer"
-              data-publicToken="8dbc7080-19f5-475b-a777-c58d74d65be7"
-              data-theme="dark"
-              data-color="e81e4d"
-              data-channelid=""
-              data-rendered="false"
-              className="cstrEmbed"
-            >
-              <a href="https://www.caster.fm">Shoutcast Hosting</a>
-              <a href="https://www.caster.fm">Stream Hosting</a>
-              <a href="https://www.caster.fm">Radio Server Hosting</a>
-            </div>
-          </div> */}
           <audio controls autoPlay>
             <source src="https://icecast-railway-production.up.railway.app/stream" type="audio/mpeg" />
             Tu navegador no soporta el elemento de audio.
