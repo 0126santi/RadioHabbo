@@ -46,23 +46,10 @@ export default function Home() {
   return (
     <>
       {/* Banner superior */}
-      <div
-        className="banner"
-        style={{ width: "100%" }}
-      >
-        <div
-          className="banner-content"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            width: "100%"
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <img src="/imagenes/foto.jpeg" alt="Foto" className="banner-foto" />
-            <h1 className="banner-titulo" style={{ marginLeft: "10px" }}>RADIO</h1>
-          </div>
+      <div className="banner">
+        <div className="banner-content">
+          <img src="/imagenes/foto.jpeg" alt="Foto" className="banner-foto" />
+          <h1 className="banner-titulo">RADIO</h1>
         </div>
       </div>
 
