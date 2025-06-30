@@ -82,13 +82,7 @@ export default function Home() {
             <img
               src="https://www.habbo.es/habbo-imaging/avatarimage?user=rojosantrix&action=std&direction=2&head_direction=2&size=l"
               alt="Keko de Habbo"
-              style={{
-                imageRendering: "pixelated",
-                width: "auto",
-                height: "160px",
-                marginRight: "20px",
-                marginLeft: "20px"
-              }}
+              className="keko-habbo"
             />
             {/* Hora y fecha */}
             <div className="hora-fecha">

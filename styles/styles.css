@@ -46,17 +46,15 @@ body {
 }
 
 .reproductor {
-  margin: 30px auto 0 auto;
-  max-width: 400px;
+  margin: 30px 30px 0 30px;
+  max-width: 100%;
   background: #1b1c1d;
   border-radius: 16px;
   padding: 10px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.2);
-}
-.cstrEmbed {
-  width: 300px !important;
-  height: 280px !important;
-  overflow: hidden;
+  width: 100% !important;
+  height: 100% !important;
+  //overflow: hidden;
 }
 
 .hora-fecha {
@@ -131,6 +129,8 @@ body {
   justify-content: center;
   align-items: stretch;
   margin-top: 24px;
+  margin-right: 30px;
+  margin-left: 30px;
 }
 
 .info-row .mensaje,
@@ -145,6 +145,14 @@ body {
   align-items: center; /* Centra el contenido horizontalmente */
   max-width: none;
   width: 100%;
+}
+
+.keko-habbo {
+  image-rendering: pixelated;
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
+  margin-left: 20px;
 }
 
 @media (max-width: 800px) {
