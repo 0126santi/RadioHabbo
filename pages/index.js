@@ -80,7 +80,7 @@ export default function Home() {
             </div>
             {/* Keko de Habbo */}
             <img
-              src="https://www.habbo.es/habbo-imaging/avatarimage?user=rojosantrix&action=std&direction=2&head_direction=2&size=l"
+              src="https://www.habbo.es/habbo-imaging/avatarimage?user=rojosantrix&action=std&direction=2&head_direction=2&size=l&rand=123"
               alt="Keko de Habbo"
               className="keko-habbo"
             />
