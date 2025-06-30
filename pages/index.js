@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [hora, setHora] = useState("Cargando...");
   const [fecha, setFecha] = useState("");
+  const rand = Math.floor(Math.random() * 1000000);
 
   useEffect(() => {
     async function actualizarHoraFecha() {
@@ -80,7 +81,7 @@ export default function Home() {
             </div>
             {/* Keko de Habbo */}
             <img
-              src="https://www.habbo.es/habbo-imaging/avatarimage?user=rojosantrix&action=std&direction=2&head_direction=2&size=l&rand=123"
+              src={`https://www.habbo.es/habbo-imaging/avatarimage?user=rojosantrix&action=std&direction=2&head_direction=2&size=l&rand=${rand}`}
               alt="Keko de Habbo"
               className="keko-habbo"
             />
